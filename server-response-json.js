@@ -3,8 +3,21 @@ const http = require('http'); //importar modulo http
 const server = http.createServer((req, res) => {
    //Establecer el codigo de estado y el tipo de contenido de la respuesta 
    res.statusCode = 200;
-   res.setHeader('Content-Type', 'text/plain');
-   res.end('Respuesta del servidor\nHola, Mundo!\nEsto es una respuesta del servidor en texto plano.'); //Enviar la respuesta
+   res.setHeader('Content-Type', 'application/json');
+   res.end(JSON.stringify([
+      {
+        tipoCarro: "Deportivo",
+        marca: "Ferrari",
+        modelo: "SF90 Spider",
+        color: "Rojo"
+      },
+      {
+         tipoCarro: "Pick-up",
+         marca: "Ford",
+         modelo: "F-150",
+         color: "Blanco"
+      }
+    ])); //Enviar la respuesta
 });
 
 //Asignar un puerto y hacer que el servidor escuche en ese puerto
